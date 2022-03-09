@@ -7,7 +7,7 @@ const posts = [
     {
         id: "jkbhbbasdjbf",
         title: "Título da Publicação",
-        descrição: "Descrição da publi"
+        description: "Descrição da publi"
     }
 ]
 
@@ -17,8 +17,28 @@ app.get("/all", (req, res) => {
     res.json(JSON.stringify(posts));
 });
 
+
 // Rota que vai fazer novas publicações;
-app.get("/new", (req, res) => { });
+app.post("/new", express.json(), (req, res, next) => {
+
+    let id = idGenerator();
+    let title = req.body.title;
+    let description = req.body.description;
+
+    if (title === "" || description === "") {
+        next("Title or Description Undefined");
+    } else {
+        posts.push({ id, title, description });
+
+        res.send("Post Added.");
+    }
+});
+
+
+// Gerando um ID;
+function idGenerator() {
+    return Math.random().toString(36).substring(2, 9);
+}
 
 
 app.listen(port, (error) => {
