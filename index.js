@@ -2,6 +2,12 @@ const port = 3000;
 const express = require("express");
 const posts = require("./model/posts");
 const app = express();
+const path = require("path");
+
+
+// Aqui estarei acessando o INDEX.HTML, dentro da pasta public.
+app.use(express.static(path.join(__dirname, "public")));
+
 
 
 // Rota que vai chamar todas as publicações;
