@@ -2,7 +2,7 @@ module.exports = {
 
     posts: [
         {
-            id: "jkbhbbasdjbf",
+            id: "opa",
             title: "Título da Publicação",
             description: "Descrição da publi"
         }
