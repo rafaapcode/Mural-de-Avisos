@@ -1,6 +1,6 @@
-// const { json } = require("express/lib/response");
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Executando esta função somente depois de carregar a Página HTML;
     updatePost();
 })
 
@@ -38,5 +38,22 @@ function updatePost() {
 };
 
 function newPost() {
+    let t = document.getElementById("title").value;
+    let d = document.getElementById("description").value;
 
+    let post = { title: t, description: d };
+
+    const options = {
+        method: "POST",
+        headers: new Headers({ "content-type": "application/json" }),
+        body: JSON.stringify(post)
+    };
+
+
+    fetch("http://localhost:3000/api/new", options).then(res => {
+        console.log(res);
+        updatePost();
+        document.getElementById("title").value = "";
+        document.getElementById("description").value = "";
+    })
 };
