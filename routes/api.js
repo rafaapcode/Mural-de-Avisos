@@ -1,12 +1,20 @@
 const express = require("express");
 const posts = require("../model/posts");
 const router = express.Router();
-
+const cors = require("cors");
 
 // Rota que vai chamar todas as publicações;
 router.get("/all", (req, res) => {
     res.json(JSON.stringify(posts.getAll()));
 });
+
+const options = {    
+    origin: "http://localhost:3000"
+}
+
+
+// O use serve para pegar todo tipo de rota;
+router.use(cors(options));
 
 
 // Rota que vai fazer novas publicações;
