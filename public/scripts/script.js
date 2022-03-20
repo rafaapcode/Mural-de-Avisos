@@ -20,7 +20,6 @@ function updatePost() {
             let postElement = ` <div id=${post.id} class="card mb-5">
                 <div class="card-header">
                     <h5 class="card-title">${post.title}</h5>
-                    <h5 class="card-title">ID: ${post.id}</h5>
                 </div>
 
                 <div class="card-body">
